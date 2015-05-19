@@ -17,7 +17,8 @@ class purchase_order_form(models.Model):
         if purchase_order_lines:
             text = ""
             for purchase_order_line in purchase_order_line_obj.browse(cr, uid, purchase_order_lines):
-
+                reference = False
+                
                 # get the supplier ref code
                 supplierinfo_obj = self.pool.get('product.supplierinfo')
                 suppliers = supplierinfo_obj.search(cr, uid, [('product_tmpl_id', '=', purchase_order_line.product_id.product_tmpl_id.id)])
@@ -27,11 +28,11 @@ class purchase_order_form(models.Model):
 
                 if reference == False:
                     reference = purchase_order_line.product_id.code
+                if reference == False:
+                    reference = "NO REFERENCE"
     
-                if reference:
-                    text += str(reference) + ", " + str(purchase_order_line.product_qty) + "\r\n"
-                else:
-                    text += "NO REFERENCE," + str(purchase_order_line.product_qty) + "\r\n"
+                text += str(reference) + ", " + str(int(purchase_order_line.product_qty)) + "\r\n"
+
             if self.export_csv != text:
                 self.export_csv = text;
         else:
