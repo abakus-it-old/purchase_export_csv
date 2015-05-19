@@ -8,8 +8,8 @@
             <field name="arch" type="xml">
                 <notebook>
                     <page string="Export" groups="base.group_hr_user">
-                        <group string="Export text">
-                            <field class="oe_inline" name="export_csv"/>
+                        <field class="oe_inline" name="export_csv"/>
+                        <group>
                             <button name="create_export_csv" type="object" string="Compute CSV"/>
                         </group>
                     </page>
