@@ -3,7 +3,7 @@ from openerp import models, fields, api
 class purchase_order_form(models.Model):
     _inherit = ['purchase.order']
 
-    export_csv = fields.Text(store=False) #, compute='_create_export_csv')
+    export_csv = fields.Text() #, compute='_create_export_csv')
 
     #@api.one
     #@api.onchange('order_line')
@@ -18,12 +18,13 @@ class purchase_order_form(models.Model):
             for purchase_order_line in purchase_order_line_obj.browse(cr, uid, purchase_order_lines):
                 reference = purchase_order_line.product_id.code
 
-                if reference == false:
-                    # get the supplier ref code
-                    suppliers_obj = self.pool.get('product.supplierinfo')
-                    for supp in supplier_obj.search(cr, uid, [('product_tmpl_id', '=', purchase_order_line.product_id.product_tmpl_id)]):
-                        if supp.name == self.partner_id:
-                            reference = supp.product_code
+                #if reference == false:
+                #    # get the supplier ref code
+                #    suppliers_obj = self.pool.get('product.supplierinfo')
+                #    suppliers = supplier_obj.search(cr, uid, [('product_tmpl_id', '=', purchase_order_line.product_id.product_tmpl_id)]):
+                #    for supp in suppliers_obj.browse(cr, uid, suppliers):
+                #        if supp.name == self.partner_id:
+                #            reference = supp.product_code
 
                 if reference:
                     text += str(internal_reference) + ", " + str(purchase_order_line.product_qty) + "\r\n"

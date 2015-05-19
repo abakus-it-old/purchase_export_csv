@@ -9,9 +9,8 @@
                 <notebook>
                     <page string="Export" groups="base.group_hr_user">
                         <group string="Export text">
-                            <field name="pricelist_id"/>
-                            <!--<field class="oe_inline" name="export_csv"/>-->
-                            <!--<button name="create_export_csv" type="object" string="Compute CSV"/>-->
+                            <field class="oe_inline" name="export_csv"/>
+                            <button name="create_export_csv" type="object" string="Compute CSV"/>
                         </group>
                     </page>
                 </notebook>
