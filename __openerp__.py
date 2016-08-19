@@ -1,6 +1,6 @@
 {
     'name': "Purchase Order Export in CSV",
-    'version': '1.0',
+    'version': '9.0.1.0',
     'depends': ['purchase',],
     'author': "Valentin THIRION, AbAKUS it-solutions SARL",
     'website': "http://www.abakusitsolutions.eu",
